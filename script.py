@@ -6,8 +6,6 @@ HOST = 192.168.100.1
 # connect to source VPN router 
 	connection = routeros_api.RouterOsApiPool( HOST, username='API', password='somepassword', plaintext_login=True)
 	api = connection.get_api()
-
-	#Make sure function only runs once 
   
   # Create IPSec Profile and Save to datatbase 
 	list_ipsecprofile = api.get_resource('/ip/ipsec/profile')
@@ -26,11 +24,11 @@ HOST = 192.168.100.1
 	list_ipsecpeer.add(peer="ikev2-peer" secret="thisisnotasecurepsk")
 	
 	#Configure PHASE II polcy
-	list_ipsecpolicy = ('ip ipsec policy')
+	list_ipsecpolicy = ('ip/ipsec/policy')
 	list_ipsecpolicy.add(src_address="10.1.202.0/24" src_port="any" dst_address="10.1.101.0/24" dst_port="any" tunnel="yes" action="encrypt" proposal="default" peer="ikve2-peer")
 
 	#Add NAT exception
-	list_ipfirewall = ('ip firewall nat')
+	list_ipfirewall = ('ip/firewall/nat')
 	list_ipfirewall.add(chain="srcnat" action="accept"  place_before=0 src_address="10.1.202.0/24" dst_address="10.1.101.0/24")
 	
 	#Close connection
