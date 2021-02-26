@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/mcmuchenje/mikrotik-routeros#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "engage-ui": "^1.148.0",
+    "express": "^4.17.1",
+    "passport": "^0.4.1"
   }
 }
