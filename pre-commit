@@ -1,0 +1,14 @@
+#!/bin/bash
+echo 'Performing pre-commit'
+git add .
+git commit -m 'git hook commit local repo'
+
+git checkout master
+
+git pull --rebase
+
+git checkout feature-a
+
+git merge --no-ff master
+
+exit 0
